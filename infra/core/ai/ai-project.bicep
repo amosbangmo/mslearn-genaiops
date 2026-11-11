@@ -295,6 +295,9 @@ resource modelDeployments 'Microsoft.CognitiveServices/accounts/deployments@2025
   for deployment in (deployments ?? []): {
     parent: aiAccount
     name: deployment.name
+    dependsOn: [
+      project
+    ]
     sku: {
       name: deployment.sku.name
       capacity: deployment.sku.capacity
